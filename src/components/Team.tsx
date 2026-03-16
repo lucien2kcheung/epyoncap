@@ -1,5 +1,5 @@
 import { useLanguage } from '../contexts/LanguageContext';
-import { Linkedin } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 
 export function Team() {
   const { t, language } = useLanguage();
@@ -43,14 +43,24 @@ export function Team() {
               <div className="p-6">
                 <div className="flex items-start justify-between mb-1">
                   <h3 className="text-2xl font-bold text-slate-900">{member.name}</h3>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#800020] hover:text-[#600018] transition-colors"
-                  >
-                    <Linkedin className="h-6 w-6" />
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="mailto:lucien@epyoncap.co.jp"
+                      className="text-slate-500 hover:text-slate-700 transition-colors"
+                      aria-label="Send email"
+                    >
+                      <Mail className="h-6 w-6" />
+                    </a>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded p-1 transition-colors"
+                      aria-label="LinkedIn profile"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                  </div>
                 </div>
                 <p className="text-lg text-slate-600 mb-4 font-medium">{member.role}</p>
                 <div className="border-t border-slate-200 pt-4">

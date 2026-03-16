@@ -24,9 +24,9 @@ export function About() {
               className="rounded-lg shadow-lg h-64 w-full object-cover"
             />
             <img
-              src="https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Construction equipment"
-              className="rounded-lg shadow-lg h-64 w-full object-cover mt-8"
+              src="/Demoiltion-image.jpg"
+              alt="Demolition site"
+              className="rounded-lg shadow-lg h-64 w-full object-cover object-center mt-8"
             />
           </div>
         </div>
