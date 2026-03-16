@@ -11,7 +11,7 @@ export function Team() {
       image: '/WhatsApp_Image_2025-04-10_at_15.26.09.jpeg',
       bio: language === 'en'
         ? 'Lucien is a Managing Partner & Co-Founder at Epyon Capital Partners.\n\nPrior to Epyon, Lucien was an Executive Director and founding investment team member at Keyrock Capital Management in Hong Kong.\n\nBefore Keyrock, Lucien was an Investment Professional at Castik Capital Partners in Munich. Lucien started his career in investment banking with Citi in London.\n\nLucien holds a B.Sc. in Economics and Management from the University of Bristol.'
-        : 'ルシアンは、エピオン・キャピタル・パートナーズの共同創業者兼マネージング・パートナーです。\n\nエピオン以前は、香港のKeyrock Capital Managementでエグゼクティブ・ディレクター兼創設投資チームメンバーを務めていました。\n\nKeyrock以前は、ミュンヘンのCastik Capital Partnersで投資専門家として勤務。ロンドンのCitiで投資銀行業務のキャリアをスタート。\n\nブリストル大学にて経済学および経営学の理学士号を取得。',
+        : 'エピオン・キャピタル・パートナーズの共同創業者兼マネージング・パートナー。\n\nエピオン設立以前は、香港のKeyrock Capital Managementにてエグゼクティブ・ディレクターおよび創設投資チームのメンバーを務める。\n\nKeyrock入社以前は、ミュンヘンのCastik Capital Partnersにて投資業務に従事。キャリアはロンドンのCitiにて投資銀行業務から開始。\n\nブリストル大学にて経済学および経営学の理学士号を取得。',
       isParagraph: true,
       linkedin: 'https://www.linkedin.com/in/luciencheung'
     },
