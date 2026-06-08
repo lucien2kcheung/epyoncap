@@ -51,6 +51,10 @@ const translations = {
     contact_company: 'Company',
     contact_message: 'Message',
     contact_send: 'Send Message',
+    contact_sending: 'Sending...',
+    contact_success: 'Thank you. Your message has been sent.',
+    contact_error: 'Something went wrong. Please try again or email us directly at info@epyoncap.co.jp.',
+    contact_error_email: 'Please enter a valid email address.',
 
     footer_rights: 'All rights reserved.',
   },
@@ -94,6 +98,10 @@ const translations = {
     contact_company: '会社名',
     contact_message: 'メッセージ',
     contact_send: '送信する',
+    contact_sending: '送信中...',
+    contact_success: 'ありがとうございます。メッセージを送信しました。',
+    contact_error: 'エラーが発生しました。もう一度お試しいただくか、info@epyoncap.co.jp まで直接ご連絡ください。',
+    contact_error_email: '有効なメールアドレスを入力してください。',
 
     footer_rights: '全著作権所有。',
   },
