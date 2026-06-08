@@ -10,10 +10,41 @@ export function Contact() {
     company: '',
     message: '',
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorKey, setErrorKey] = useState('contact_error');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+      setErrorKey('contact_error_email');
+      setStatus('error');
+      return;
+    }
+
+    setStatus('submitting');
+    try {
+      const response = await fetch('https://formspree.io/f/mkoarbla', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        setErrorKey('contact_error');
+        setStatus('error');
+      }
+    } catch {
+      setErrorKey('contact_error');
+      setStatus('error');
+    }
   };
 
   return (
@@ -36,6 +67,7 @@ export function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#800020] focus:border-transparent outline-none transition"
@@ -50,6 +82,7 @@ export function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#800020] focus:border-transparent outline-none transition"
@@ -64,6 +97,7 @@ export function Contact() {
                 <input
                   type="text"
                   id="company"
+                  name="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#800020] focus:border-transparent outline-none transition"
@@ -76,6 +110,7 @@ export function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -86,10 +121,22 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#800020] text-white font-semibold rounded-lg hover:bg-[#600018] transition-colors"
+                disabled={status === 'submitting'}
+                className="w-full px-8 py-4 bg-[#800020] text-white font-semibold rounded-lg hover:bg-[#600018] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {t('contact_send')}
+                {status === 'submitting' ? t('contact_sending') : t('contact_send')}
               </button>
+
+              {status === 'success' && (
+                <p className="text-green-700 text-sm" role="status">
+                  {t('contact_success')}
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="text-[#800020] text-sm" role="alert">
+                  {t(errorKey)}
+                </p>
+              )}
             </form>
           </div>
 
@@ -112,14 +159,23 @@ export function Contact() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-[#800020] p-3 rounded-lg">
+                <a
+                  href="mailto:info@epyoncap.co.jp"
+                  className="bg-[#800020] p-3 rounded-lg inline-flex hover:bg-[#600018] transition-colors"
+                  aria-label={language === 'en' ? 'Send us an email' : 'メールを送る'}
+                >
                   <Mail className="h-6 w-6 text-white" />
-                </div>
+                </a>
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
                     {language === 'en' ? 'Email' : 'メール'}
                   </h3>
-                  <p className="text-slate-600">info@epyoncap.co.jp</p>
+                  <a
+                    href="mailto:info@epyoncap.co.jp"
+                    className="text-slate-600 hover:text-[#800020] transition-colors"
+                  >
+                    info@epyoncap.co.jp
+                  </a>
                 </div>
               </div>
             </div>
