@@ -29,6 +29,26 @@ export function Team() {
       email: 'lucien@epyoncap.co.jp',
       linkedin: 'https://www.linkedin.com/in/luciencheung',
     },
+    {
+      name: language === 'en' ? 'Bryan Lam' : 'ブライアン・ラム',
+      role: language === 'en' ? 'Advisor' : 'アドバイザー',
+      image: '/Bryan_Lam.jpg',
+      isParagraph: false,
+      imagePosition: 'object-top',
+      email: 'bryan@epyoncap.co.jp',
+      linkedin: 'https://www.linkedin.com/in/lambryan/',
+      bio: language === 'en'
+        ? [
+            'Advises Epyon Capital Partners on fund formation, structuring and regulatory matters.',
+            'Hong Kong-qualified lawyer with nearly a decade of experience in private funds at an international law firm in Hong Kong, advising sponsors on the formation of PE, VC and real estate funds.',
+            'Holds a JD and PCLL from the Chinese University of Hong Kong and a BBA in Finance from Simon Fraser University. Fluent in English, Mandarin and Cantonese.',
+          ]
+        : [
+            'エピオン・キャピタル・パートナーズに対し、ファンド組成、スキーム構築および規制関連事項について助言を行う。',
+            '香港弁護士資格を有し、香港の国際法律事務所にてプライベートファンド業務に約10年従事。PE、VC、不動産ファンドの組成についてスポンサーへの助言を行う。',
+            '香港中文大学にてJD（法務博士）およびPCLL（法実務教育課程修了証書）、サイモンフレーザー大学にて金融学の経営学士（BBA）を取得。英語、北京語、広東語に堪能。',
+          ],
+    },
   ];
 
   const advisors: Member[] = [
@@ -149,8 +169,8 @@ export function Team() {
           <p className="text-xl text-slate-600">{t('team_subtitle')}</p>
         </div>
 
-        {/* Managing Partner */}
-        <div className="flex justify-center max-w-xl mx-auto">
+        {/* Managing Partner & Advisor */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <MemberCard key={index} member={member} />
           ))}
